@@ -5,6 +5,13 @@ spring:
     url: jdbc:mysql://localhost:3306/implicaction
     username: root
     password: password
+    
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      username: root
+      password: root
 
   mail:
     host: smtp.mailtrap.io
