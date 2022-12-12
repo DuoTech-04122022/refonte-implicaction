@@ -47,3 +47,4 @@ services:
 volumes:
   my-db:
   localstack:
+  mongo:
