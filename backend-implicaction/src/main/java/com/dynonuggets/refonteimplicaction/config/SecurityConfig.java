@@ -36,7 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
             // swagger
             "/v2/api-docs",
-
+            "/ws**",
+            "/topic**",
             // swagger ui
             "/swagger-resources/**",
             "/swagger-ui.html",
@@ -47,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // Toutes les routes front doivent être autorisées en back car c'est angular qui en gère l'accès
     private static final String[] ANGULAR_WHITELIST = {
             "/",
+            "/chat",
             "/entreprise/**",
             "/users/**",
             "/jobs/**",
@@ -77,6 +79,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
+    
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -90,6 +93,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(PREMIUM_PROTECTEDS).hasRole(RoleEnum.PREMIUM.name())
                 .anyRequest()
                 .authenticated();
+                
         httpSecurity.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
     }
 

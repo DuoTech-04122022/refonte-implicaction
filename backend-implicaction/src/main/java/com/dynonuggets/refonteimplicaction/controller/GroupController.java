@@ -23,7 +23,6 @@ import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
 @RestController
 @RequestMapping(GROUPS_BASE_URI)
 @AllArgsConstructor
-@Slf4j
 public class GroupController {
 
     private final GroupService groupService;

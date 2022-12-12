@@ -1,0 +1,25 @@
+package com.dynonuggets.refonteimplicaction.adapter;
+
+import com.dynonuggets.refonteimplicaction.dto.ChatMessageDto;
+import com.dynonuggets.refonteimplicaction.model.ChatMessage;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ChatMessageAdapter {
+
+    public ChatMessage toModel(ChatMessageDto dto) {
+        return ChatMessage.builder()
+            .type(dto.getType())
+            .content(dto.getContent())
+            .sender(dto.getSender())
+            .build();
+    }
+
+    public ChatMessageDto toDto(ChatMessage model) {
+        return ChatMessageDto.builder()
+            .type(model.getType())
+            .content(model.getContent())
+            .sender(model.getSender())
+            .build();
+    }
+}

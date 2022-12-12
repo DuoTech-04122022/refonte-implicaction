@@ -6,6 +6,13 @@ spring:
     username: root
     password: password
 
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      username: root
+      password: root
+      
   mail:
     host: smtp.mailtrap.io
     port: 2525
