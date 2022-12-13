@@ -16,13 +16,15 @@ import lombok.Setter;
 @Builder
 @Document("message")
 @AllArgsConstructor
-public class ChatMessage {
+public class ChatGroup {
     @Id
     private String id;
-    private String type;
-    private String content;
-    private String sender;
-    
+    private User[] users;
+    private String title;
+    private String description;
+
+    private ChatMessage lastMessage;
+
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDateTime sendedAt;
+    private LocalDateTime lastMessageSendedAt;
 }

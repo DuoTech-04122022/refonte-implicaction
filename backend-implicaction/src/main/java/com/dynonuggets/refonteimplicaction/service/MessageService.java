@@ -1,5 +1,6 @@
 package com.dynonuggets.refonteimplicaction.service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -33,6 +34,7 @@ public class MessageService {
     public ChatMessage add(ChatMessageDto dto) {
 
         ChatMessage message = messageAdapter.toModel(dto);
+        message.setSendedAt(LocalDateTime.now());
         messageRepository.save(message);
 
         return message;

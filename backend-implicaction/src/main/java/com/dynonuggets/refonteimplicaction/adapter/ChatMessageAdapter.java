@@ -12,6 +12,7 @@ public class ChatMessageAdapter {
             .type(dto.getType())
             .content(dto.getContent())
             .sender(dto.getSender())
+            .sendedAt(dto.getSendedAt())
             .build();
     }
 
@@ -20,6 +21,7 @@ public class ChatMessageAdapter {
             .type(model.getType())
             .content(model.getContent())
             .sender(model.getSender())
+            .sendedAt(model.getSendedAt())
             .build();
     }
 }
