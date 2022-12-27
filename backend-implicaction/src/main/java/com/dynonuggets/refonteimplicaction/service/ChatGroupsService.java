@@ -9,8 +9,12 @@ import javax.transaction.Transactional;
 import org.springframework.data.domain.Pageable;
 
 import com.dynonuggets.refonteimplicaction.adapter.ChatGroupAdapter;
+import com.dynonuggets.refonteimplicaction.adapter.UserAdapter;
 import com.dynonuggets.refonteimplicaction.dto.ChatGroupDto;
+import com.dynonuggets.refonteimplicaction.dto.UserDto;
+import com.dynonuggets.refonteimplicaction.exception.NotFoundException;
 import com.dynonuggets.refonteimplicaction.model.ChatGroup;
+import com.dynonuggets.refonteimplicaction.model.User;
 import com.dynonuggets.refonteimplicaction.repository.ChatGroupRepository;
 
 import lombok.AllArgsConstructor;
@@ -20,6 +24,7 @@ import lombok.AllArgsConstructor;
 public class ChatGroupsService {
     private final ChatGroupRepository chatGroupRepository;
     private final ChatGroupAdapter chatGroupAdapter;
+    private final UserAdapter userAdapter;
 
 
     @Transactional()
@@ -37,6 +42,36 @@ public class ChatGroupsService {
 
     public Optional<ChatGroup> findById(String id) {
         return chatGroupRepository.findById(id);
+    }
+
+    public ChatGroup addMember(String id, UserDto dto) {
+        User user = userAdapter.toChatModel(dto);
+
+        ChatGroup group = chatGroupRepository.findGroupById(id);
+
+        if(group == null) {
+            throw new NotFoundException("Group not found");
+        }
+
+        group.addUser(user);
+
+        chatGroupRepository.save(group);
+
+        return group;
+    }
+
+    public ChatGroup removeMember(String groupId, long userId) {
+
+        ChatGroup group = chatGroupRepository.findGroupById(groupId);
+
+        if(group == null) {
+            throw new NotFoundException("Group not found");
+        }
+
+        group.removeUser(userId);
+        chatGroupRepository.save(group);
+
+        return group;
     }
 
 }

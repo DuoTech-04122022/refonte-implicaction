@@ -24,7 +24,7 @@ import lombok.AllArgsConstructor;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/messages")
+@RequestMapping("/api/chat/messages")
 public class MessageController {
     private final ChatMessageAdapter messageAdapter;
     private final MessageService messageService;

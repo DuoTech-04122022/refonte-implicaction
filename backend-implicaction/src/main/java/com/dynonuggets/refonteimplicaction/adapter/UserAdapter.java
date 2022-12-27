@@ -16,7 +16,6 @@ import static java.util.Collections.emptySet;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 
-
 @Component
 @AllArgsConstructor
 public class UserAdapter {
@@ -89,7 +88,26 @@ public class UserAdapter {
     }
 
     private String getImageUrl(User model) {
-        return model.getImage() != null ? fileService.buildFileUri(model.getImage().getObjectKey()) : DEFAULT_USER_IMAGE_URI;
+        return model.getImage() != null ? fileService.buildFileUri(model.getImage().getObjectKey())
+                : DEFAULT_USER_IMAGE_URI;
+    }
+
+    public User toChatModel(UserDto dto) {
+        return User.builder()
+                .id(dto.getId())
+                .username(dto.getUsername())
+                .firstname(dto.getFirstname())
+                .lastname(dto.getLastname())
+                .contribution(dto.getContribution())
+                .expectation(dto.getExpectation())
+                .hobbies(dto.getHobbies())
+                .presentation(dto.getPresentation())
+                .purpose(dto.getPurpose())
+                .email(dto.getEmail())
+                .url(dto.getUrl())
+                .phoneNumber(dto.getPhoneNumber())
+                .birthday(dto.getBirthday())
+                .build();
     }
 
     public User toModel(UserDto dto) {
@@ -127,7 +145,8 @@ public class UserAdapter {
     public UserDto toDtoLight(User model) {
         final List<String> roles = rolesToDtos(model);
 
-        final String imageUrl = model.getImage() != null ? fileService.buildFileUri(model.getImage().getObjectKey()) : null;
+        final String imageUrl = model.getImage() != null ? fileService.buildFileUri(model.getImage().getObjectKey())
+                : null;
 
         return UserDto.builder()
                 .id(model.getId())

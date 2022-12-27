@@ -1,6 +1,7 @@
 package com.dynonuggets.refonteimplicaction.dto;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import com.dynonuggets.refonteimplicaction.model.ChatMessage;
 import com.dynonuggets.refonteimplicaction.model.User;
@@ -17,9 +18,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChatGroupDto {
-    private User[] users;
+    private ArrayList<User> users;
     private String title;
     private String description;
-    private ChatMessage lastMessage;
-    private LocalDateTime lastMessageSendedAt;
+    // private ChatMessage lastMessage;
+    // private LocalDateTime lastMessageSendedAt;
 }
