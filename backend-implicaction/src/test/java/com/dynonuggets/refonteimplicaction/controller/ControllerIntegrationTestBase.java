@@ -1,5 +1,7 @@
 package com.dynonuggets.refonteimplicaction.controller;
 
+import com.dynonuggets.refonteimplicaction.repository.ChatGroupRepository;
+import com.dynonuggets.refonteimplicaction.repository.MessageRepository;
 import com.dynonuggets.refonteimplicaction.security.JwtProvider;
 import com.dynonuggets.refonteimplicaction.service.UserDetailsServiceImpl;
 import com.google.gson.Gson;
@@ -25,4 +27,10 @@ public class ControllerIntegrationTestBase {
 
     @MockBean
     JwtProvider jwtProvider;
+
+    @MockBean
+    ChatGroupRepository chatGroupRepository;
+
+    @MockBean
+    MessageRepository messageRepository;
 }
