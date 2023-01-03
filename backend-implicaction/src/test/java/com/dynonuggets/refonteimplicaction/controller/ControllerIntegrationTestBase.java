@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.web.servlet.MockMvc;
 
 public class ControllerIntegrationTestBase {
@@ -27,6 +28,9 @@ public class ControllerIntegrationTestBase {
 
     @MockBean
     JwtProvider jwtProvider;
+
+    @MockBean
+    MongoTemplate mongoTemplate;
 
     @MockBean
     ChatGroupRepository chatGroupRepository;
