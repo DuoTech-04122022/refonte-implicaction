@@ -29,12 +29,14 @@ public class MessageController {
     private final ChatMessageAdapter messageAdapter;
     private final MessageService messageService;
 
-    @GetMapping
+    @GetMapping("/{groupId}")
     public ResponseEntity<Page<ChatMessageDto>> find(
             @RequestParam(value = "page", defaultValue = "0") int page,
-            @RequestParam(value = "rows", defaultValue = "10") int rows) {
+            @RequestParam(value = "rows", defaultValue = "10") int rows,
+            @PathVariable String groupId
+            ) {
         Pageable pageable = PageRequest.of(page, rows);
-        Page<ChatMessageDto> messages = messageService.getAll(pageable);
+        Page<ChatMessageDto> messages = messageService.find(groupId, pageable);
         return ResponseEntity.ok(messages);
     }
 
@@ -49,10 +51,5 @@ public class MessageController {
         // messagingTemplate.convertAndSendToUser(message.getSender(), "/topic/chat", messageDto);
 
         return ResponseEntity.ok(messageDto);
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Optional<ChatMessage>> findMessage(@PathVariable String id) {
-        return ResponseEntity.ok(messageService.findById(id));
     }
 }

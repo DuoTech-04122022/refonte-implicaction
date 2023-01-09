@@ -29,6 +29,11 @@ public class MessageService {
     public Page<ChatMessageDto> getAll(Pageable pageable) {
         return messageRepository.findAll(pageable).map(messageAdapter::toDto);
     }
+    
+    @Transactional()
+    public Page<ChatMessageDto> find(String groupId, Pageable pageable) {
+        return messageRepository.findByGroupId(groupId, pageable).map(messageAdapter::toDto);
+    }
 
     @Transactional()
     public ChatMessage add(ChatMessageDto dto) {
