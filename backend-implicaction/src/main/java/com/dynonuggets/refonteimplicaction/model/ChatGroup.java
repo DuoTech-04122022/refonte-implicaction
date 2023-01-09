@@ -1,7 +1,7 @@
 package com.dynonuggets.refonteimplicaction.model;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Iterator;
 
 import org.springframework.data.annotation.Id;
@@ -21,7 +21,7 @@ import lombok.Setter;
 public class ChatGroup {
     @Id
     private String id;
-    private ArrayList<User> users;
+    private List<User> users;
     private String title;
     private String description;
 

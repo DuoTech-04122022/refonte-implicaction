@@ -32,12 +32,13 @@ public class ChatGroupController {
     private final ChatGroupAdapter groupAdapter;
     private final ChatGroupsService groupService;
 
-    @GetMapping
+    @GetMapping("/user/{user}")
     public ResponseEntity<Page<ChatGroupDto>> find(
+            @PathVariable int user,
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "rows", defaultValue = "10") int rows) {
         Pageable pageable = PageRequest.of(page, rows);
-        Page<ChatGroupDto> groups = groupService.getAll(pageable);
+        Page<ChatGroupDto> groups = groupService.find(user, pageable);
         return ResponseEntity.ok(groups);
     }
 

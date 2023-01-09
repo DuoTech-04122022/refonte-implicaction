@@ -32,6 +32,10 @@ public class ChatGroupsService {
         return chatGroupRepository.findAll(pageable).map(chatGroupAdapter::toDto);
     }
 
+    public Page<ChatGroupDto> find(int userId, Pageable pageable) {
+        return chatGroupRepository.findAllByUsersById(userId, pageable).map(chatGroupAdapter::toDto);
+    }
+
     @Transactional()
     public ChatGroup add(ChatGroupDto dto) {
 
