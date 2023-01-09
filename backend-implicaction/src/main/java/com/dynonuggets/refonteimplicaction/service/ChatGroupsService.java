@@ -64,7 +64,7 @@ public class ChatGroupsService {
         return group;
     }
 
-    public ChatGroup removeMember(String groupId, long userId) {
+    public ChatGroup removeMember(String groupId, UserDto dto) {
 
         ChatGroup group = chatGroupRepository.findGroupById(groupId);
 
@@ -72,7 +72,7 @@ public class ChatGroupsService {
             throw new NotFoundException("Group not found");
         }
 
-        group.removeUser(userId);
+        group.removeUser(dto.getId());
         chatGroupRepository.save(group);
 
         return group;

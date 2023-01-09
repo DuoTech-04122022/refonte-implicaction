@@ -57,7 +57,12 @@ public class ChatGroupController {
     }
 
     @PatchMapping("/{id}/members/add")
-    public ResponseEntity<ChatGroup> putMethodName(@PathVariable String id, @RequestBody UserDto user) {
+    public ResponseEntity<ChatGroup> addUser(@PathVariable String id, @RequestBody UserDto user) {
         return ResponseEntity.ok(groupService.addMember(id, user));
+    }
+
+    @PatchMapping("/{id}/members/remove")
+    public ResponseEntity<ChatGroup> removeUser(@PathVariable String id, @RequestBody UserDto user) {
+        return ResponseEntity.ok(groupService.removeMember(id, user));
     }
 }

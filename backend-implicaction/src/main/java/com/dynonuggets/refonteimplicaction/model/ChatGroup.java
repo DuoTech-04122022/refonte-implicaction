@@ -2,6 +2,7 @@ package com.dynonuggets.refonteimplicaction.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.springframework.data.annotation.Id;
@@ -36,11 +37,13 @@ public class ChatGroup {
 
     public void removeUser(long id) {
 
-        Iterator<User> iterator = this.users.iterator();
+        ArrayList<User> users = new ArrayList<User>(this.users);
+
+        Iterator<User> iterator = users.iterator();
 
         while (iterator.hasNext()) {
             User user = iterator.next();
-            if (user.getId().equals(id)) {
+            if (user.getId() != null && user.getId().equals(id)) {
                 this.users.remove(user);
             }
         }
