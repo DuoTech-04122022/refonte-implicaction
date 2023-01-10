@@ -1,0 +1,14 @@
+<div>
+  <h1>Chatbox</h1>
+  <div id="chatbox">
+    <div *ngFor="let message of messages">
+      <app-self-message
+        *ngIf="message?.sender === 'me'"
+        [message]="message"
+      ></app-self-message>
+      <app-message *ngIf="message?.sender !== 'me'" [message]="message"></app-message>
+    </div>
+  </div>
+  <input [(ngModel)]="currentMessage" placeholder="Message ..." />
+  <button (click)="onSendMessage()">Envoyer</button>
+</div>
