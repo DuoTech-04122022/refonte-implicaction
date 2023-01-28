@@ -27,7 +27,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String[] AUTH_WHITELIST = {
             // api
-            "/api/chat/**",
             "/api/auth/signup",
             "/api/auth/login",
             "/api/auth/refresh/token",
