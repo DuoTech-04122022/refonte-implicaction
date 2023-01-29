@@ -9,6 +9,7 @@ public class ChatMessageAdapter {
 
     public ChatMessage toModel(ChatMessageDto dto) {
         return ChatMessage.builder()
+            .id(dto.getId())
             .type(dto.getType())
             .content(dto.getContent())
             .sender(dto.getSender())
@@ -18,6 +19,7 @@ public class ChatMessageAdapter {
 
     public ChatMessageDto toDto(ChatMessage model) {
         return ChatMessageDto.builder()
+                .id(model.getId())
             .type(model.getType())
             .content(model.getContent())
             .sender(model.getSender())

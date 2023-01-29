@@ -9,6 +9,7 @@ import com.dynonuggets.refonteimplicaction.model.ChatGroup;
 public class ChatGroupAdapter {
     public ChatGroup toModel(ChatGroupDto dto) {
         return ChatGroup.builder()
+            .id(dto.getId())
             .users(dto.getUsers())
             .title(dto.getTitle())
             .description(dto.getDescription())
@@ -19,6 +20,7 @@ public class ChatGroupAdapter {
 
     public ChatGroupDto toDto(ChatGroup model) {
         return ChatGroupDto.builder()
+        .id(model.getId())
         .users(model.getUsers())
         .title(model.getTitle())
         .description(model.getDescription())

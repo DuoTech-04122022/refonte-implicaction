@@ -18,6 +18,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChatMessageDto {
+
+    private String id;
     private String type;
     private String content;
     private String sender;

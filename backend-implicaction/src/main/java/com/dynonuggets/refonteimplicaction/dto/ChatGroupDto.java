@@ -18,9 +18,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChatGroupDto {
+    private String id;
     private List<User> users;
     private String title;
     private String description;
     // private ChatMessage lastMessage;
     // private LocalDateTime lastMessageSendedAt;
+
 }
