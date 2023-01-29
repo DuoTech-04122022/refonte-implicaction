@@ -26,20 +26,12 @@ import lombok.AllArgsConstructor;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping
+@RequestMapping("/api/messages")
 public class MessageController {
     private final ChatMessageAdapter messageAdapter;
     private final MessageService messageService;
 
-    @PostMapping("/messages")
-    public ResponseEntity<ChatMessageDto> add(@RequestBody ChatMessageDto dto) {
-
-        ChatMessage message = messageService.add(dto);
-        ChatMessageDto messageDto = messageAdapter.toDto(message);
-
-        return ResponseEntity.ok(messageDto);
-    }
-    @GetMapping("/messages/{groupId}")
+    @GetMapping("/{groupId}")
     public ResponseEntity<Page<ChatMessageDto>> find(
             @PathVariable String groupId,
             @RequestParam(value = "page", defaultValue = "0") int page,
@@ -49,10 +41,6 @@ public class MessageController {
         return ResponseEntity.ok(messages);
     }
 
-    @GetMapping("/message/{id}")
-    public ResponseEntity<Optional<ChatMessage>> findMessage(@PathVariable String id) {
-        return ResponseEntity.ok(messageService.findById(id));
-    }
 
     @MessageMapping("/send/{groupId}")
     @SendTo("/topic/chat/{groupId}")
