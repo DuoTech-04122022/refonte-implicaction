@@ -23,6 +23,7 @@ public class ChatMessageDto {
     private String type;
     private String content;
     private String sender;
+    private String groupId;
 
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonFormat(pattern="yyyy-MM-dd hh:mm")

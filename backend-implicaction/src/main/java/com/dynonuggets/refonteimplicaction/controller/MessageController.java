@@ -31,6 +31,15 @@ public class MessageController {
     private final ChatMessageAdapter messageAdapter;
     private final MessageService messageService;
 
+    @PostMapping()
+    public ResponseEntity<ChatMessageDto> add(@RequestBody ChatMessageDto dto) {
+
+        ChatMessage message = messageService.add(dto);
+        ChatMessageDto messageDto = messageAdapter.toDto(message);
+
+        return ResponseEntity.ok(messageDto);
+    }
+
     @GetMapping("/{groupId}")
     public ResponseEntity<Page<ChatMessageDto>> find(
             @PathVariable String groupId,
