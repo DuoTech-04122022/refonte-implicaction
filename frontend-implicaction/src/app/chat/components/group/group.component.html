@@ -1,0 +1,21 @@
+<a [routerLink]="['/chat/' + group.id]" class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-3">
+      <img
+        src="{{ group.imageUrl }}"
+        class="mr-3 avatar"
+        alt="Discussion image"
+      />
+    </div>
+    <div class="col-md-9">
+      <div class="card-body">
+        <h5 class="card-title">{{ group.title }}</h5>
+        <p class="card-text">
+          <small class="text-muted">
+            {{ group.description }}
+          </small>
+        </p>
+      </div>
+    </div>
+  </div>
+</a>

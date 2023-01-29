@@ -452,4 +452,8 @@ export class ApiEndpointsService {
     findMessages(groupId: string): string {
       return ApiEndpointsService.createUrlWithPathVariables(Uris.CHAT_MESSAGE.BASE_URI, [groupId])
     }
+
+    createMessage(): string {
+      return ApiEndpointsService.createUrl(Uris.CHAT_MESSAGE.BASE_URI);
+    }
 }

@@ -16,4 +16,11 @@ export class MessagesService {
   findMessages(groupId: string): Observable<Message[]> {
     return this.http.get<Message[]>(this.apiEndpointService.findMessages(groupId)).pipe(map((res: any) => res.content as Message[]));
   }
+
+  /**
+   * TEMP function
+   */
+  async sendMessages(message: Message): Promise<any> {
+    await this.http.post<any>(this.apiEndpointService.createMessage(), message).toPromise();
+  }
 }

@@ -1,6 +1,6 @@
 export interface Group {
-    id: String;
-    users: String[];
+    id: string;
+    users: string[];
     title: string;
     description: string;
     imageUrl: string;

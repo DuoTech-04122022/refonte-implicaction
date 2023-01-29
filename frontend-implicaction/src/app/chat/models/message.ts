@@ -1,8 +1,9 @@
 export interface Message {
-    id: number;
+    id?: string;
     content: string;
     sender: string;
     type: string;
-    sendedAt: Date;
+    groupId: string;
+    sendedAt?: Date;
     avatar?: string
 }
