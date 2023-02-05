@@ -32,4 +32,8 @@ export class GroupsService {
   removeUser(groupId: string, user: string): Observable<any> {
     return this.http.post(this.apiEndpointService.removeUser(groupId), user);
   }
+
+  createGroup(payload: any): Observable<any> {
+    return this.http.post(this.apiEndpointService.addGroup(), payload);
+  }
 }

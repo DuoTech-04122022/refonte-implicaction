@@ -3,6 +3,7 @@ package com.dynonuggets.refonteimplicaction.model;
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,6 +23,8 @@ public class ChatMessage {
     private String type;
     private String content;
     private String sender;
+    
+    @Indexed(name = "group_id")
     private String groupId;
     
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)

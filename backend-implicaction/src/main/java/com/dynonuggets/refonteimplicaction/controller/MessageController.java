@@ -44,7 +44,7 @@ public class MessageController {
     public ResponseEntity<Page<ChatMessageDto>> find(
             @PathVariable String groupId,
             @RequestParam(value = "page", defaultValue = "0") int page,
-            @RequestParam(value = "rows", defaultValue = "10") int rows) {
+            @RequestParam(value = "rows", defaultValue = "50") int rows) {
         Pageable pageable = PageRequest.of(page, rows);
         Page<ChatMessageDto> messages = messageService.find(groupId, pageable);
         return ResponseEntity.ok(messages);
