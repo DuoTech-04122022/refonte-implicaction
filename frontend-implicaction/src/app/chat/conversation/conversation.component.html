@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+
+    <section class="discussions">
+      <div class="discussion message-active">
+        <div class="photo" style="">
+          <div class="online"></div>
+        </div>
+        <div class="desc-contact">
+          <p class="name">{{ message.sender }}</p>
+          <p class="message">{{ message?.content }}</p>
+        </div>
+        <div class="timer">{{ message?.sendedAt | date}}</div>
+      </div>
+
+    </section>
+  </div>
+</div>

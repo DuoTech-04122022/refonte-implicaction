@@ -1,14 +1,48 @@
 <div>
-  <h1>Chatbox</h1>
-  <div id="chatbox">
+  <h1>Conversation</h1>
+
+  <div class="messages-chat">
     <div *ngFor="let message of messages">
+      <div class="header-chat">
+        <i class="icon fa fa-user-o" aria-hidden="true"></i>
+        <app-message class="name" *ngIf="message?.sender !== 'me'" ] > {{ message.sender }} </app-message>
+        <i class="icon clickable fa fa-ellipsis-h right" aria-hidden="true"></i>
+      </div>
+
+      <div class="messages-chat">
+        <div class="message">
+          <div class="photo" style="">
+            <div class="online"></div>
+          </div>
+          <app-message class="text" *ngIf="message?.sender !== 'me'" [message]="message"></app-message>
+        </div>
+        <app-message class="time" *ngIf="message?.sender !== 'me'" >{{message.sendedAt | date }}</app-message>
+
+      <div class="message text-only">
+        <div class="response">
+          <app-self-message class="text"
+            *ngIf="message?.sender === 'me'" [message]="message">
+          </app-self-message>
+        </div>
+      </div>
+
+        <app-self-message class="response-time time"
+         *ngIf="message?.sender === 'me'" >{{message.sendedAt | date }}
+        </app-self-message>
+
       <app-self-message
         *ngIf="message?.sender === 'me'"
         [message]="message"
       ></app-self-message>
-      <app-message *ngIf="message?.sender !== 'me'" [message]="message"></app-message>
+
+      </div>
+
     </div>
   </div>
-  <input [(ngModel)]="currentMessage" placeholder="Message ..." />
-  <button (click)="onSendMessage()">Envoyer</button>
+
+  <div class="footer-chat">
+    <input [(ngModel)]="currentMessage" placeholder="Tapez ici ..." />
+    <button (click)="onSendMessage()">Envoyer</button>
+  </div>
+
 </div>

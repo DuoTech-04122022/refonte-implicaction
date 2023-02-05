@@ -65,6 +65,10 @@ const routes: Routes = [
   {
     path: Univers.CHAT.url,
     loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule),
+    canActivate: [AuthGuard],
+    data: {
+      allowedRoles: Univers.CHAT.roles
+    }
   }
 
 ];

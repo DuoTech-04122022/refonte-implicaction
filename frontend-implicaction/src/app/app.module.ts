@@ -15,10 +15,16 @@ import {SidebarModule} from 'primeng/sidebar';
 import {BoardModule} from './board/board.module';
 import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { ChatComponent } from './chat/chat.component';
+import { ConversationComponent } from './chat/conversation/conversation.component';
+import { MessagesComponent } from './chat/messages/messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ChatComponent,
+    ConversationComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
