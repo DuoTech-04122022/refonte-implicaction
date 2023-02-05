@@ -4,11 +4,17 @@ import {AuthGuard} from './core/guards/auth.guard.service';
 import {UnauthorizedComponent} from './auth/components/unauthorized/unauthorized.component';
 import {Univers} from './shared/enums/univers';
 import {BoardComponent} from './board/board.component';
+import {ChatComponent} from "./chat/chat.component";
 
 const routes: Routes = [
+
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: 'chat',
+    component: ChatComponent
   },
   {
     path: Univers.HOME.url,

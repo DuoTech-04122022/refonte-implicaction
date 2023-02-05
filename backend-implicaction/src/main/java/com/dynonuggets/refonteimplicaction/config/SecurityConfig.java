@@ -63,6 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/assets/img/*.jpg",
             "/favicon.ico",
             "/**.ttf",
+            "/chat**",
             "/**.woff"
     };
 
