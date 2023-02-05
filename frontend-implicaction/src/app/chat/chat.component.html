@@ -1,5 +1,8 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container bootstrap snippets bootdey">
+  <p>
+    <button (click)="connect()">Connect to chat</button>
+  </p>
   <div class="row">
     <div class="col-md-4 bg-white ">
       <div class=" row border-bottom padding-sm" style="height: 40px;">Mes conversations</div>
@@ -16,79 +19,82 @@
             <small class="time text-muted">Temps</small>
             <small class="chat-alert label label-danger">1</small>
           </a>
+          <button (click)="getMessages(channel)">Get messages</button>
         </li>
-        <li>
-          <a href="#" class="clearfix">
-            <!--img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle"-->
-            <div class="friend-name">
-              <strong>User 2</strong>
-            </div>
-            <div class="last-message text-muted"></div>
-            <small class="time text-muted">Temps</small>
-            <small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="clearfix">
-            <div class="friend-name">
-              <strong>User 2</strong>
-            </div>
-            <div class="last-message text-muted"></div>
-            <small class="time text-muted">Hier</small>
-            <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="clearfix">
-            <div class="friend-name">
-              <strong>User 2</strong>
-            </div>
-            <div class="last-message text-muted"></div>
-            <small class="time text-muted">Hier</small>
-            <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="clearfix">
-            <div class="friend-name">
-              <strong>Kate</strong>
-            </div>
-            <div class="last-message text-muted"></div>
-            <small class="time text-muted">Hier</small>
-            <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="clearfix">
-            <div class="friend-name">
-              <strong>User 2</strong>
-            </div>
-            <div class="last-message text-muted"></div>
-            <small class="time text-muted">Hier</small>
-            <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="clearfix">
-            <div class="friend-name">
-              <strong>User 2</strong>
-            </div>
-            <div class="last-message text-muted"></div>
-            <small class="time text-muted">Hier</small>
-            <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="clearfix">
-            <div class="friend-name">
-              <strong>User 1</strong>
-            </div>
-            <div class="last-message text-muted"></div>
-            <small class="time text-muted">temps</small>
-            <small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
-          </a>
+        <li *ngFor="let message of messages">
+          {{ message['message'] }}
         </li>
       </ul>
+
+      <a href="#" class="clearfix">
+        <!--img src="https://bootdey.com/img/Content/user_2.jpg" alt="" class="img-circle"-->
+        <div class="friend-name">
+          <strong>User 2</strong>
+        </div>
+        <div class="last-message text-muted"></div>
+        <small class="time text-muted">Temps</small>
+        <small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
+      </a>
+      <li>
+        <a href="#" class="clearfix">
+          <div class="friend-name">
+            <strong>User 2</strong>
+          </div>
+          <div class="last-message text-muted"></div>
+          <small class="time text-muted">Hier</small>
+          <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="clearfix">
+          <div class="friend-name">
+            <strong>User 2</strong>
+          </div>
+          <div class="last-message text-muted"></div>
+          <small class="time text-muted">Hier</small>
+          <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="clearfix">
+          <div class="friend-name">
+            <strong>Kate</strong>
+          </div>
+          <div class="last-message text-muted"></div>
+          <small class="time text-muted">Hier</small>
+          <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="clearfix">
+          <div class="friend-name">
+            <strong>User 2</strong>
+          </div>
+          <div class="last-message text-muted"></div>
+          <small class="time text-muted">Hier</small>
+          <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="clearfix">
+          <div class="friend-name">
+            <strong>User 2</strong>
+          </div>
+          <div class="last-message text-muted"></div>
+          <small class="time text-muted">Hier</small>
+          <small class="chat-alert text-muted"><i class="fa fa-reply"></i></small>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="clearfix">
+          <div class="friend-name">
+            <strong>User 1</strong>
+          </div>
+          <div class="last-message text-muted"></div>
+          <small class="time text-muted">temps</small>
+          <small class="chat-alert text-muted"><i class="fa fa-check"></i></small>
+        </a>
+      </li>
     </div>
 
     <!-- Conversatio en cours -->
@@ -185,7 +191,7 @@
         <div class="input-group">
           <input class="form-control border no-shadow no-rounded" placeholder="Ecrivez votre message">
           <span class="input-group-btn">
-            			<button class="btn btn-success no-rounded" type="button">Envoyer</button>
+            			<button class="btn btn-success no-rounded" type="button" (click)="sendMessage()">Envoyer</button>
             		</span>
         </div>
       </div>
