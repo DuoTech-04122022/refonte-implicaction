@@ -424,4 +424,36 @@ export class ApiEndpointsService {
       });
     return qs;
   }
+
+  /**
+    Chat
+  */
+
+    findGoup(id: string): string {
+      return ApiEndpointsService.createUrlWithPathVariables(Uris.CHAT_GROUP.BASE_URI, [id]);
+    }
+
+    findGroups(user: number, pageable: Pageable<any>): string {
+      return ApiEndpointsService.createUrlWithPageable(Uris.CHAT_GROUP.GET_BY_USER + '/' + user, pageable);
+    }
+
+    addGroup(): string {
+      return ApiEndpointsService.createUrl(Uris.CHAT_GROUP.BASE_URI);
+    }
+
+    addUser(id: string): string {
+      return ApiEndpointsService.createUrlWithPathVariables(Uris.CHAT_GROUP.BASE_URI, [id]) + '/member/add';
+    }
+
+    removeUser(id: string): string {
+      return ApiEndpointsService.createUrlWithPathVariables(Uris.CHAT_GROUP.BASE_URI, [id]) + '/member/remove';
+    }
+
+    findMessages(groupId: string): string {
+      return ApiEndpointsService.createUrlWithPathVariables(Uris.CHAT_MESSAGE.BASE_URI, [groupId])
+    }
+
+    createMessage(): string {
+      return ApiEndpointsService.createUrl(Uris.CHAT_MESSAGE.BASE_URI);
+    }
 }

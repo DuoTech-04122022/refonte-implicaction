@@ -1,0 +1,57 @@
+<div class="messages-container">
+    <div class="group-header card">
+      <div class="row no-gutters">
+        <div class="col-md-3">
+          <img *ngIf="group?.imageUrl"
+            src="{{ group?.imageUrl }}"
+            class="mr-3 avatar"
+            alt="Discussion image"
+          />
+        </div>
+        <div class="col-md-9">
+          <div class="card-body">
+            <h5 class="card-title">{{ group?.title }}</h5>
+            <p class="card-text">
+              <small class="text-muted">
+                {{ group?.description }}
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="messages">
+      <div *ngFor="let message of receivedMessages">
+        <div class="sender" *ngIf="message.sender === user">
+          <div class="message">{{ message?.content }}</div>
+        </div>
+        <div class="receiver" *ngIf="message.sender !== user">
+          <img
+            *ngIf="message?.avatar"
+            src="{{ message?.avatar }}"
+            class="mr-3"
+            alt="Avatar du destinataire"
+          />
+          <img
+            *ngIf="!message?.avatar"
+            src="https://i.pravatar.cc/150?img=3"
+            class="mr-3"
+            alt="Avatar du destinataire"
+          />
+          <div class="message">{{ message?.content }}</div>
+        </div>
+      </div>
+    </div>
+    <form class="send-message" (ngSubmit)="sendMessage()">
+      <div class="form-group">
+        <input
+          [(ngModel)]="currentMessage"
+          [ngModelOptions]="{standalone: true}"
+          type="text"
+          class="form-control"
+          placeholder="Écrire un message"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Env!oyer</button>
+    </form>
+  </div>

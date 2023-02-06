@@ -113,4 +113,20 @@ export class Uris {
   static JOB_APPLICATION = class {
     static readonly BASE_URI = 'applies';
   };
+
+
+  /**
+   * Chat
+   */
+
+  static CHAT_GROUP = class {
+    static readonly BASE_URI = 'chat/groups';
+    static readonly GET_BY_USER = this.BASE_URI + '/user';
+    static readonly ADD_MEMBER = 'member/add';
+    static readonly REMOVE_MEMBER = 'member/remove';
+  }
+
+  static CHAT_MESSAGE = class {
+    static readonly BASE_URI = 'messages';
+  }
 }
